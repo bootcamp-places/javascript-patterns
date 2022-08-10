@@ -1,4 +1,4 @@
-# Abstract Factory
+# Builder
 
 ```mermaid
 flowchart LR
@@ -43,7 +43,7 @@ interface MirrorSpecification {
 Implementation
 ```js
 class CustomMirrorBuilder {
-  private specification: MirrorSpecification;
+  protected specification: MirrorSpecification;
 
   constructor() {
     this.specification = {
