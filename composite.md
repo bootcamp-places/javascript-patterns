@@ -38,7 +38,7 @@ class Span implements INode {
 }
 
 class Div implements INode {
-  nodes: INode[] = [];
+  protected nodes: INode[] = [];
 
   addNode(child: INode) {
     this.nodes.push(child);
