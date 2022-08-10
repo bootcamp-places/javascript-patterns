@@ -22,7 +22,7 @@ graph TD
     E -- "Hello" --> B
 
     B -- "John<br/>01/01<br/>Hello" --> A  
-```;
+```
 
 Implementation example:
 
