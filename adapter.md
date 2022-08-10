@@ -22,7 +22,7 @@ interface IMapService {
 }
 
 class ShippingCalculator {
-  mapService: IMapService;
+  protected mapService: IMapService;
 
   constructor(mapService: IMapService) {
     this.mapService = mapService;
@@ -61,7 +61,7 @@ And, as you can see, the `GoogleMaps` class does't implement `IMapService`, so `
 
 ```js
 class GoogleMapsShippingAdapter implements IMapService {
-  map: GoogleMapsService;
+  protected map: GoogleMapsService;
 
   constructor() {
     this.map = new GoogleMaps();
