@@ -3,27 +3,25 @@
 
 ```mermaid
 graph TD
-    A[main] -->|"getText()"| B(article)
+    A[main] -- "getText()" --> B(article)
 
-    B -->|"getText()"| C[p.author]
-    B -->|"getText()"| D[p.date]
-    B -->|"getText()"| E[p.content]
+    B -- "getText()" --> C[p.author]
+    B -- "getText()" --> D[p.date]
+    B -- "getText()" --> E[p.content]
     
-    C -->|"getText()"| F[textNode: John]
-    D -->|"getText()"| G[textNode: 01/01]
-    E -->|"getText()"| H[textNode: Hello world!]
+    C -- "getText()" --> F[textNode: John]
+    D -- "getText()" --> G[textNode: 01/01]
+    E -- "getText()" --> H[textNode: Hello world!]
     
-    F -->|"John"| C
-    G -->|"01/01"| D
-    H -->|"Hello"| E
+    F -- "John" --> C
+    G -- "01/01" --> D
+    H -- "Hello" --> E
 
-    C -->|"John"| B
-    D -->|"01/01"| B
-    E -->|"Hello"| B
+    C -- "John" --> B
+    D -- "01/01" --> B
+    E -- "Hello" --> B
 
-    B -->|"John<br/>01/01<br/>Hello"| A
-
-  
+    B -- "John<br/>01/01<br/>Hello" --> A  
 ```;
 
 Implementation example:
