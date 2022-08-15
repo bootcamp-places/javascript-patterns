@@ -1,5 +1,7 @@
 # Builder
 
+![This is an image](/assets/builder.png)
+
 ```mermaid
 flowchart LR
   A[X_Builder] -- "buildFeature_1()" --> B(X_Builder)
@@ -7,149 +9,83 @@ flowchart LR
   C[X_Builder] -- "build()" --> E(Result object)
 ```
 
-For example, if you are working on implemnetation of flow for building some complicated object, it may be a good place to use the Builder pattern, because its main purpose is to simplify creating of similar objects but with different configurations. In the code example below you can see how it could be implemented for ordering custom mirrors:
+For example, if you are working on implementation of flow for building some complicated object, it may be a good place to use the Builder pattern, because its main purpose is to simplify creating of similar objects but with different configurations. In the code example below you can see how it could be implemented for creating object for performing payment transaction, as it may contain a lot of fields:
 
 Interfaces:
 
 ```js
-interface IHole {
-  x: number;
-  y: number;
-  radius: number;
-}
-
-type TCornerPosition =
-  | "all"
-  | "top-left"
-  | "top-right"
-  | "bottom-left"
-  | "bottom-right";
-
-interface ICorner {
-  position: TCornerPosition;
-  radius: number;
-}
-
-interface MirrorSpecification {
-  width: number;
-  height: number;
-  thickness: number;
-  holes: IHole[];
-  beveled: boolean;
-  corners: ICorner[];
-}
-```
-
-Implementation
-```js
-class CustomMirrorBuilder {
-  protected specification: MirrorSpecification;
-
+class PaymentRequest {
   constructor() {
-    this.specification = {
-      width: 0,
-      height: 0,
-      thickness: 0,
-      beveled: false,
-      holes: [],
-      corners: []
+    this.request = {
+      sender: {},
+      receiver: {},
+      data: {}
     };
   }
 
-  setWidth(width: number) {
-    this.specification.width = width;
+  setSenderCardNumber(cardNumber) {
+    this.request.sender.cardNumber = cardNumber;
 
     return this;
   }
 
-  setHeight(height: number) {
-    this.specification.height = height;
+  setSenderCardCvv(cvv) {
+    this.request.sender.cvv = cvv;
 
     return this;
   }
 
-  setThickness(thickness: number) {
-    this.specification.thickness = thickness;
+  setSenderCardDate(date) {
+    this.request.sender.expireDate = date;
 
     return this;
   }
 
-  setBevelness(beveled: boolean) {
-    this.specification.beveled = beveled;
+  setSenderName(fullName) {
+    this.request.sender.name = fullName;
 
     return this;
   }
 
-  addHole(x: number, y: number, radius: number) {
-    this.specification.holes.push({
-      x,
-      y,
-      radius
-    });
+  setReceiverCardNumber(cardNumber) {
+    this.request.receiver.cardNumber = cardNumber;
 
     return this;
   }
 
-  setCorner(position: TCornerPosition, radius: number) {
-    if (position === "all") {
-      this.specification.corners = [{ position, radius }];
-    } else {
-      this.specification.corners.push({ position, radius });
-    }
+  setReceiverName(fullName) {
+    this.request.receiver.name = fullName;
 
     return this;
   }
 
-  reset() {
-    this.specification = {
-      width: 0,
-      height: 0,
-      thickness: 0,
-      beveled: false,
-      holes: [],
-      corners: []
-    };
+  setApiKey(key) {
+    this.request.data.key = key;
 
     return this;
   }
 
-  getResult() {
-    if (
-      !this.specification.width ||
-      !this.specification.height ||
-      !this.specification.thickness
-    ) {
-      throw new Error("Width, height and thickness cannot be 0");
-    }
+  setAmount(amount) {
+    this.request.data.amount = amount;
 
-    return this.specification;
+    return this;
+  }
+
+  getRequest() {
+    return this.request;
   }
 }
-```
-Usage example
 
-```js
-const builder = new CustomMirrorBuilder();
+const request = new PaymentRequest()
+  .setSenderName("John Doe")
+  .setSenderCardNumber("0000 1111 2222 3333")
+  .setSenderCardDate("01/26")
+  .setSenderCardCvv("000")
+  .setReceiverCardNumber("3333 2222 1111 0000")
+  .setReceiverName("Jane Doe")
+  .setAmount(100)
+  .setApiKey("qwerty")
+  .getRequest();
 
-const squareMirror = builder
-  .setWidth(10)
-  .setHeight(10)
-  .setThickness(1)
-  .getResult();
-
-const circleMirror = builder
-  .reset()
-  .setWidth(10)
-  .setHeight(10)
-  .setThickness(1)
-  .setCorner("all", 5)
-  .getResult();
-  
-const mirrorWithCircle = builder
-  .reset()
-  .setWidth(10)
-  .setHeight(10)
-  .setThickness(1)
-  .addHole(5, 5, 2)
-  .getResult();
+SomePaymentService.performTransaction(request);
 ```
