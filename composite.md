@@ -3,76 +3,75 @@
 
 ```mermaid
 graph TD
-    A[main] -- "getText()" --> B(article)
+    A[Bank Account] -- "getBalance" --> B(Client funds)
+    A[Client Account] -- "getBalance" --> C(Available Credit)
 
-    B -- "getText()" --> C[p.author]
-    B -- "getText()" --> D[p.date]
-    B -- "getText()" --> E[p.content]
-    
-    C -- "getText()" --> F[textNode: John]
-    D -- "getText()" --> G[textNode: 01/01]
-    E -- "getText()" --> H[textNode: Hello world!]
-    
-    F -- "John" --> C
-    G -- "01/01" --> D
-    H -- "Hello" --> E
-
-    C -- "John" --> B
-    D -- "01/01" --> B
-    E -- "Hello" --> B
-
-    B -- "John<br/>01/01<br/>Hello" --> A  
+    B -- "getBalance" --> D[Deposit]
+    B -- "getBalance" --> E[Card]
 ```
 
-Implementation example:
+The main purpose of the Composite pattern is to let you work with all nodes of the tree-like structure via common interface.
+
+In the example below both `Router` and `Route` implements the `render` method. We can update the example, to let the `Router` have nested `Router`s inside, but it still will follow the same interface and we still will be able to call `render` method and the node will render itself and its children.
+
+Example:
 
 ```js
-interface INode {
-  getNumberOfChildren: () => number;
-}
+class Router {
+  constructor() {
+    this.routes = [];
+  }
 
-class Span implements INode {
-  getNumberOfChildren() {
-    return 0;
+  addRoute(route) {
+    this.routes.push(route);
+  }
+
+  setCurrentPath(path) {
+    this.currentPath = path;
+  }
+
+  render() {
+    const route = this.routes.find(
+      (route) => this.currentPath === route.getPath()
+    );
+
+    if (route) {
+      route.render();
+    } else {
+      console.log("No route matched");
+    }
   }
 }
 
-class Div implements INode {
-  protected nodes: INode[] = [];
-
-  addNode(child: INode) {
-    this.nodes.push(child);
+class Route {
+  constructor(path, component) {
+    this.path = path;
+    this.component = component;
   }
 
-  getNode(index: number) {
-    return this.nodes[index]
+  getPath() {
+    return this.path;
   }
 
-  getNumberOfChildren() {
-    return this.nodes.reduce((amount, child) => {
-      return amount + child.getNumberOfChildren();
-    }, this.nodes.length);
+  render() {
+    this.component.render();
   }
 }
-```
-Usage example:
 
-```js
-const div = new Div();
-const users = new Div();
+const router = new Router();
+const homeRoute = new Route("/home", {
+  render: () => {
+    console.log("Home");
+  }
+});
+const aboutRoute = new Route("/about", {
+  render: () => {
+    console.log("About");
+  }
+});
 
-for (let i = 0; i < 50; i++) {
-  const user = new Div();
-  user.addNode(new Span());
-  user.addNode(new Span());
+router.addRoute(homeRoute);
+router.addRoute(aboutRoute);
 
-  users.addNode(user);
-}
-
-div.addNode(new Div());
-div.addNode(users);
-
-console.log(div.getNumberOfChildren());
-console.log(div.getNode(0).getNumberOfChildren()); // we don't care whether the received node is "leaf" or "branch"
-console.log(div.getNode(1).getNumberOfChildren()); // because they implement the same interface
+router.render();
 ```
