@@ -8,59 +8,216 @@ flowchart LR
   B -- "getLibMethod(a)" --> C[Library]
 ```
 
-For example, we have a class that works with some maps service to calc the shipping price:
+For example, we are working on push notifications feature for Android and IOS. And there are two different library classes that provides required functionality: one is developed for Android, and the another one for IOS.
+To make the work with them easier we can add an Adapter to each of these classes;
 
+---
+## First example
 ```js
-class ShippingCalculator {
-  constructor(mapService) {
-    this.mapService = mapService;
+// External package class example
+
+class PushNotificationsIOS {
+  registerDevice() {
+    return Promise.resolve("123qwe");
   }
 
-  getPrice(from, to, weight) {
-    const startLocation = this.mapService.getLocation(from);
-    const finishLocation = this.mapService.getLocation(to);
-    const distance = this.mapService.getDistance(startLocation, finishLocation);
+  onForegroundNotification(handler) {
+    this.foregroundListener = handler;
+  }
 
-    return (distance * weight) / 100;
+  onBackgroundNotification(handler) {
+    this.backgroundListener = handler;
+  }
+
+  /*
+    rest of the implementation with 
+    triggering notification listeners
+  */
+}
+
+// External package class example
+class FirebaseNotifications {
+  getDeviceToken() {
+    return "qwe123";
+  }
+
+  onMessage(handler) {
+    this.messageListener = handler;
+  }
+
+  /*
+    rest of the implementation with 
+    triggering notification listener
+  */
+}
+```
+Adapters:
+```js
+class IOSNotificationsAdapter {
+  constructor() {
+    this.service = new PushNotificationsIOS();
+  }
+
+  getDeviceToken() {
+    return this.service.registerDevice();
+  }
+
+  onNotificatonReceived(handler) {
+    this.service.onForegroundNotification((data) => {
+      handler(data, "foreground");
+    });
+
+    this.service.onBackgroundNotification((data) => {
+      handler(data, "background");
+    });
+  }
+}
+
+class FirebaseNotificationsAdapter {
+  constructor() {
+    this.service = new FirebaseNotifications();
+  }
+
+  getDeviceToken() {
+    return Promise.resolve(this.service.getDeviceToken());
+  }
+
+  onNotificatonReceived(handler) {
+    this.service.onMessage(handler);
   }
 }
 ```
-And it worked well, untill we decided to use the new maps service with incompatible interface, for example Google Maps:
-
+Usage example
 ```js
-class GoogleMaps {
-  coordsByAddress(address) {
-    return [55.92312, -12.13123];
+import {isIOS} from 'somewhere';
+
+class Application {
+  constructor() {
+    this.notificationService = isIOS
+      ? new IOSNotificationsAdapter()
+      : new FirebaseNotificationsAdapter();
   }
 
-  calcDistance(from, to) {
-    return 378;
+  async subscribeToNotifications() {
+    const token = await this.notificationService.getDeviceToken();
+    /* do something with token, e.g. send it to backend */
+    
+    this.notificationService.onNotificatonReceived((data, type) => {
+      if (type === 'foreground') {
+        // show custom notification
+      } else if (type === 'background') {
+        // show system notification
+      }
+    })
   }
 }
-
-class GoogleMapsShippingAdapter {
-  constructor() {
-    this.map = new GoogleMaps();
-  }
-
-  getLocation(address) {
-    const coords = this.map.coordsByAddress(address);
-
+```
+---
+## Second example
+Services that we can use to get shipping price depending on chosen shipping provider:
+```js
+// External package class
+class FedexShipping {
+  calc({ from, to, weight, urgent }) {
+    // ... some business logic
     return {
-      lat: coords[0],
-      lng: coords[1]
+      price: 370,
+      daysForDelivery: 3
     };
   }
+}
 
-  getDistance(from, to) {
-    const distance = this.map.calcDistance(
-      [from.lat, from.lng],
-      [to.lat, to.lng]
-    );
-
-    return distance;
+// External package class
+class AmazonShipping {
+  calcShipping(from, to, weight) {
+    // ... some business logic
+    return {
+      total: 400,
+      days: 2
+    };
   }
 }
 
-const shipping = new ShippingCalculator(new GoogleMapsShippingAdapter());
+class CourierShipping {
+  getShippingInfo(from, to, weight) {
+    // ... some business logic
+
+    return {
+      price: 150,
+      daysForDelivery: 10
+    };
+  }
+}
+```
+
+And to simplify the usage of these class it would be good to add an adapter for each of them, to use the services via unified interface:
+
+```js
+class FedexShippingAdapter {
+  constructor() {
+    this.service = new FedexShipping();
+  }
+
+  getShippingInfo({ from, to, weight, urgent }) {
+    const info = this.service.calc({
+      from, to, weight, urgent
+    });
+
+    return {
+      price: info.days,
+      days: info.daysForDelivery,
+    };
+  }
+}
+
+class AmazonShippingAdapter {
+  constructor() {
+    this.service = new FedexShipping();
+  }
+
+  getShippingInfo({ from, to, weight, urgent }) {
+    const info = this.service.getShippingInfo(from, to, weight);
+
+    return {
+      price: info.total,
+      days: info.days,
+    };
+  }
+}
+
+class CourierShippingAdapter {
+  constructor() {
+    this.service = new FedexShipping();
+  }
+
+  getShippingInfo({ from, to, weight, urgent }) {
+    const info = this.service.getShippingInfo(from, to);
+
+    return {
+      price: info.price,
+      days: info.daysForDelivery,
+    };
+  }
+}
+```
+Usage example
+```js
+const dropdownValue = 'fedex';
+let shippingService = null;
+
+if (value === 'fedex') {
+  shippingService = new FedexShippingAdapter();
+} else if (value === 'amazon') {
+  shippingService = new AmazonShippingAdapter();
+} else {
+  shippingService = new CourierShippingAdapter();
+}
+
+console.log(shippingService.getShippingInfo({
+  from: 'address1',
+  to: 'address2',
+  weight: 3,
+  urgent: false,
+}))
+
 ```
