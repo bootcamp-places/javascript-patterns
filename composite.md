@@ -12,66 +12,132 @@ graph TD
 
 The main purpose of the Composite pattern is to let you work with all nodes of the tree-like structure via common interface.
 
-In the example below both `Router` and `Route` implements the `render` method. We can update the example, to let the `Router` have nested `Router`s inside, but it still will follow the same interface and we still will be able to call `render` method and the node will render itself and its children.
-
-Example:
-
+## Implementation example:
 ```js
-class Router {
+class Menu {
   constructor() {
-    this.routes = [];
+    this.items = [];
   }
 
-  addRoute(route) {
-    this.routes.push(route);
-  }
-
-  setCurrentPath(path) {
-    this.currentPath = path;
-  }
-
-  render() {
-    const route = this.routes.find(
-      (route) => this.currentPath === route.getPath()
-    );
-
-    if (route) {
-      route.render();
-    } else {
-      console.log("No route matched");
-    }
+  addItem(item) {
+    this.items.push(item);
   }
 }
 
-class Route {
-  constructor(path, component) {
-    this.path = path;
-    this.component = component;
-  }
+class MainMenu extends Menu {
+  build() {
+    let menu = `
+        <ul class="main-menu">
+          ${this.items.reduce((result, item) => {
+            return (result += item.getHtml());
+          }, "")}
+        </ul>
+    `;
 
-  getPath() {
-    return this.path;
-  }
-
-  render() {
-    this.component.render();
+    return menu;
   }
 }
 
-const router = new Router();
-const homeRoute = new Route("/home", {
-  render: () => {
-    console.log("Home");
+class NestedMenu extends Menu {
+  constructor(title) {
+    super();
+    this.title = title;
   }
-});
-const aboutRoute = new Route("/about", {
-  render: () => {
-    console.log("About");
+
+  getHtml() {
+    let menu = `
+      <li class="menu-item">
+        <a href="#">${this.title}</a>
+        <ul class="sub-menu">
+          ${this.items.reduce((result, item) => {
+            return (result += item.getHtml());
+          }, "")}
+        </ul>
+      </li>
+    `;
+
+    return menu;
   }
-});
+}
 
-router.addRoute(homeRoute);
-router.addRoute(aboutRoute);
+class MenuItem {
+  constructor(title) {
+    this.title = title;
+  }
 
-router.render();
+  getHtml() {
+    return `
+      <li class="menu-item">
+        <a href="#">${this.title}</a>
+      </li>
+    `;
+  }
+}
+```
+---
+## Usage example:
+```js
+const mainMenu = new MainMenu();
+
+// Home
+mainMenu.addItem(new MenuItem("Home"));
+
+// About
+const about = new NestedMenu("About");
+about.addItem(new MenuItem("Personal Info"));
+about.addItem(new MenuItem("Career"));
+mainMenu.addItem(about);
+
+// Docs
+const docs = new NestedMenu("Docs");
+const secretDocs = new NestedMenu("Secret Docs");
+
+docs.addItem(secretDocs);
+docs.addItem(new MenuItem("Public Docs"));
+
+secretDocs.addItem(new MenuItem("Doc X"));
+secretDocs.addItem(new MenuItem("Doc Y"));
+
+mainMenu.addItem(docs);
+
+console.log(mainMenu.build());
+```
+
+## Result 
+```html
+<ul class="main-menu">
+   <li class="menu-item">
+      <a href="#">Home</a>
+   </li>
+   <li class="menu-item">
+      <a href="#">About</a>
+      <ul class="sub-menu">
+         <li class="menu-item">
+            <a href="#">Personal Info</a>
+         </li>
+         <li class="menu-item">
+            <a href="#">Career</a>
+         </li>
+      </ul>
+   </li>
+   <li class="menu-item">
+      <a href="#">Docs</a>
+      <ul class="sub-menu">
+         <li class="menu-item">
+            <a href="#">Secret Docs</a>
+            <ul class="sub-menu">
+               <li class="menu-item">
+                  <a href="#">Doc X</a>
+               </li>
+               <li class="menu-item">
+                  <a href="#">Doc Y</a>
+               </li>
+            </ul>
+         </li>
+         <li class="menu-item">
+            <a href="#">Public Docs</a>
+         </li>
+      </ul>
+   </li>
+</ul>
 ```
