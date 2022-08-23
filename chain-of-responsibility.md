@@ -85,3 +85,93 @@ console.log(rootReducer.handle({}, { type: "UNHANDLED" }));
 console.log(rootReducer.handle({}, { type: "PERSON/UPDATE" }));
 console.log(rootReducer.handle({}, { type: "POSTS/GET" }));
 ```
+---
+## Form Validation Example
+
+```js
+class Validator {
+  validate(form, errors) {
+    if (this.nextHandler) {
+      return this.nextHandler.validate(form, errors);
+    }
+
+    return errors;
+  }
+
+  isValid(fieldValue, regex) {
+    if (fieldValue === undefined || regex.test(fieldValue)) {
+      return true;
+    }
+
+    return false;
+  }
+
+  setNext(handler) {
+    this.nextHandler = handler;
+  }
+}
+
+class EmailValidator extends Validator {
+  validate(form, errors = {}) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!super.isValid(form.email, regex)) {
+      errors.email = "Email is not valid";
+    }
+
+    return super.validate(form, errors);
+  }
+}
+
+class CardNumberValidator extends Validator {
+  validate(form, errors = {}) {
+    const regex = /^[0-9]{15,19}$/;
+    const value = form.cardNumber.replace(/\s/g, "");
+
+    if (!super.isValid(value, regex)) {
+      errors.cardNumber = "Card number is not valid";
+    }
+
+    return super.validate(form, errors);
+  }
+}
+
+class CvvValidator extends Validator {
+  validate(form, errors = {}) {
+    const regex = /^[0-9]{3,4}$/;
+
+    if (!super.isValid(form.cvv, regex)) {
+      errors.cvv = "Card's CVV code is not valid";
+    }
+
+    return super.validate(form, errors);
+  }
+}
+```
+
+usage example:
+```js
+const chainValidators = (validators = []) => {
+  validators.forEach((handler, index, arr) => {
+    if (index < arr.length) {
+      handler.setNext(arr[index + 1]);
+    }
+  });
+
+  return validators[0];
+};
+
+const validators = chainValidators([
+  new EmailValidator(),
+  new CardNumberValidator(),
+  new CvvValidator()
+]);
+
+console.log(
+  validators.validate({
+    email: "hello.world@gmail.com",
+    cardNumber: "1234 5647 8443 5434",
+    cvv: "1233"
+  })
+);
+```
