@@ -20,32 +20,56 @@ class ListItem {
   }
 
   render() {
-    // render item
+    const container = document.createElement("div");
+    const title = document.createElement("h4");
+    title.append(this.title);
+    container.append(title);
+
+    return container;
   }
 }
-
+```
+```js
 class DismissableWrapper {
   constructor(wrapped, onDismiss) {
     this.wrapped = wrapped;
     this.onDismiss = onDismiss.bind(this);
+    this.touchStart = -1;
   }
 
-  handleTouchMove() {
-    // if dismissed then call this.onDismiss
-  }
+  handleTouchMove = (e) => {
+    if (e.touches[0].clientX - this.touchStart <= -100) {
+      this.onDismiss();
+    }
+  };
+
+  handleTouchStart = (e) => {
+    if (e.touches[0]) {
+      this.touchStart = e.touches[0].clientX;
+    }
+  };
 
   render() {
-    return (
-      <div onTouchMove={this.handleTouchMove}>
-        {this.wrapped.render()}
-      </div>
-    );
+    const wrapper = document.createElement("div");
+
+    wrapper.addEventListener("touchstart", this.handleTouchStart);
+    wrapper.addEventListener("touchmove", this.handleTouchMove);
+    wrapper.append(this.wrapped.render());
+
+    return wrapper;
   }
 }
+```
+Usage example:
+```js
+const data = [{ title: "Hello" }, { title: "World" }];
 
-const notificationsList = data.map((item) => (
-  new DismissableWrapper(new ListItem(item.title), () => {
-    // handle action, e.g. with api call
-  })
-))
+const notificationsList = data.map(
+  (item) =>
+    new DismissableWrapper(new ListItem(item.title), () => {
+      // handle action, e.g. with api call
+      console.log("dismissed");
+    })
+);
+
 ```
