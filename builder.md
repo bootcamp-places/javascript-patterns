@@ -1,6 +1,6 @@
 # Builder
 
-![This is an image](/assets/builder.png)
+![This is an image](./assets/builder.png)
 
 ```mermaid
 flowchart LR

@@ -29,5 +29,6 @@ class Singleton {
 } 
 
 new Singleton() === new Singleton(); // true
+
 Singleton.instance() === Singleton.instance(); // true
 ```

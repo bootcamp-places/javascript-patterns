@@ -1,6 +1,6 @@
 # Chain Of Responsibility
 
-![This is an image](/assets/chain-of-responsibility.jpeg)
+![This is an image](./assets/chain-of-responsibility.jpeg)
 
 ```mermaid
 flowchart LR
@@ -15,7 +15,7 @@ flowchart LR
 
     style B fill:#F87272
     style C fill:#F87272
-    style D fill:#36D399
+    style D fill:#F87272
 ```
 
 With this pattern you can implement some sort of redux reducer. You don't know which exactly reducer will handle your action, so just let the rootReducer to pass the action to all of them, and only the right one will handle it.

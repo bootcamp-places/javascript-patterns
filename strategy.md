@@ -1,6 +1,6 @@
 # Strategy
 
-![This is an image](/assets/strategy.png)
+![This is an image](./assets/strategy.png)
 
 ```mermaid
   classDiagram
@@ -63,12 +63,15 @@ class Transfer {
 
 Usage example:
 ```js
+// e.g. input values from form
 const transferData = {
-  cardNumber: '0000 0000 0000 0000'
-  cvv: '000'
+  cardNumber: '0000 0000 0000 0000',
+  cvv: '000',
   name: 'John Doe'
-}; // e.g. input values from form
-const transferType = 'bank'; // e.g. value received from dropdown
+};
+
+// e.g. value received from dropdown
+const transferType = 'bank'; 
 const transfer = new Transfer();
 
 if (transferType === 'bank') {

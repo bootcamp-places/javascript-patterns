@@ -17,7 +17,7 @@ class ErrorNotification {}
 
 class InfoNotification {}
 
-class Component {
+class NotificationFactory {
   static create (type = '') {
     const notificationTypes = {
       succes: SuccessNotification,
@@ -29,13 +29,13 @@ class Component {
   }
 }
 
-const SuccessNotification = Component.create('success');
+const SuccessNotification = NotificationFactory.create('success');
 
 const success1 = new SuccessNotification();
 const success2 = new SuccessNotification();
 const success3 = new SuccessNotification();
 
-const ErrorNotification = Component.create('error');
+const ErrorNotification = NotificationFactory.create('error');
 
 const error1 = new ErrorNotification();
 const error1 = new ErrorNotification();
