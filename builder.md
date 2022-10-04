@@ -9,7 +9,11 @@ flowchart LR
   C[X_Builder] -- "build()" --> E(Result object)
 ```
 
-For example, if you are working on implementation of flow for building some complicated object, it may be a good place to use the Builder pattern, because its main purpose is to simplify creating of similar objects but with different configurations. In the code example below you can see how it could be implemented for creating object for performing payment transaction, as it may contain a lot of fields:
+For example, if you are working on implementation of flow for building some complicated object, 
+it may be a good place to use the Builder pattern, because its main purpose is to simplify 
+creating of similar objects but with different configurations. In the code example below you 
+can see how it could be implemented for creating object for performing payment transaction, 
+as it may contain a lot of fields:
 
 Interfaces:
 
