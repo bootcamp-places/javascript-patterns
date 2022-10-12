@@ -1,6 +1,13 @@
+---
+theme: serif
+highlightTheme: monokai
+---
+
 # Builder
 
-![This is an image](./assets/builder.png)
+![[builder.png]](./assets/builder.png)
+
+---
 
 ```mermaid
 flowchart LR
@@ -9,13 +16,33 @@ flowchart LR
   C[X_Builder] -- "build()" --> E(Result object)
 ```
 
+---
+
 For example, if you are working on implementation of flow for building some complicated object, 
 it may be a good place to use the Builder pattern, because its main purpose is to simplify 
 creating of similar objects but with different configurations. In the code example below you 
 can see how it could be implemented for creating object for performing payment transaction, 
 as it may contain a lot of fields:
 
-Interfaces:
+---
+
+Example #1:
+
+```js
+const request = new PaymentRequest()
+  .setSenderName("John Doe")
+  .setSenderCardNumber("0000 1111 2222 3333")
+  .setSenderCardDate("01/26")
+  .setSenderCardCvv("000")
+  .setReceiverCardNumber("3333 2222 1111 0000")
+  .setReceiverName("Jane Doe")
+  .setAmount(100)
+  .setApiKey("qwerty")
+  .getRequest();
+
+performTransaction(request);
+```
+---
 
 ```js
 class PaymentRequest {
@@ -79,17 +106,4 @@ class PaymentRequest {
     return this.request;
   }
 }
-
-const request = new PaymentRequest()
-  .setSenderName("John Doe")
-  .setSenderCardNumber("0000 1111 2222 3333")
-  .setSenderCardDate("01/26")
-  .setSenderCardCvv("000")
-  .setReceiverCardNumber("3333 2222 1111 0000")
-  .setReceiverName("Jane Doe")
-  .setAmount(100)
-  .setApiKey("qwerty")
-  .getRequest();
-
-SomePaymentService.performTransaction(request);
 ```
