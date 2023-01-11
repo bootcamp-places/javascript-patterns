@@ -1,6 +1,6 @@
 ### Prototype <!-- element style="display:none" -->
 
-![[prototype-1.png | 400]]
+![[prototype-1.png | 400]](../imgs/prototype-1.png)
 
 Позволяет копировать объекты, не вдаваясь в подробности их реализации.
 
