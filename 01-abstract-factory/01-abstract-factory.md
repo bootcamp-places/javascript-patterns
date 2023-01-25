@@ -1,7 +1,6 @@
 ### Abstract Factory <!-- element style="display:none" -->
 
-![[abstract-factory.png]](./imgs/abstract-factory.png)
-
+![[abstract-factory.png | 400]](./imgs/abstract-factory.png)
 
 Позволяет создавать семейства связанных объектов, не привязываясь к конкретным классам создаваемых объектов.
 

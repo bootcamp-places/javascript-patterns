@@ -1,6 +1,6 @@
 ### Singleton <!-- element style="display:none" -->
 
-![[singleton.png | 500]]
+![[singleton.png | 500]](./imgs/singleton.png)
 
 Гарантирует, что у класса есть только один экземпляр
 

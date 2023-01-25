@@ -1,6 +1,6 @@
 ### Strategy <!-- element style="display:none" -->
 
-![[strategy-1.png | 400]](./imgs/strategy-1.png)
+![[strategy.png | 400]](./imgs/strategy.png)
 
 Определяет семейство схожих алгоритмов, после чего алгоритмы можно взаимозаменять прямо во время исполнения программы
 

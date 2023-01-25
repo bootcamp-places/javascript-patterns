@@ -1,18 +1,15 @@
 ### Composite <!-- element style="display:none" -->
 
-### Composite
+![[composite.png | 400]](./imgs/composite.png)
 
-![[composite-4.png]](https://refactoring.guru/design-patterns/composite)
-
-%%![[composite-2.png | 600]]
-
-![[composite-1.png | 600]]%%
+Позволяет сгруппировать множество объектов в древовидную структуру, 
+а затем работать с ней так, как будто это единичный объект.
 
 --
 
 #### Composite: example #1
 
-![[composite-1.png | 600]]
+![[composite.png | 600]]
 
 --
 
@@ -79,40 +76,40 @@ console.error(list.getSize()); // 4
 class List {
   children = [];
 
-	constructor (content = '', children = []) {
-		this.content = content;
-		this.children.push(...children);
-	}
+ constructor (content = '', children = []) {
+  this.content = content;
+  this.children.push(...children);
+ }
 
-	getContentLength () {
-		let counter = this.content.length;  
+  getContentLength () {
+    let counter = this.content.length;  
  
-		for (const child of this.children) {  
-			counter += child.getContentLength();  
-		}  
+    for (const child of this.children) {  
+      counter += child.getContentLength();  
+    }  
 
-		return counter;
-	}
+    return counter;
+  }
 }
 
 class Item {
-	constructor (content = '') {
-		this.content = content;
-	}
+  constructor (content = '') {
+    this.content = content;
+  }
 
-	getContentLength () {
-		return this.content.length;
-	}
+  getContentLength () {
+    return this.content.length;
+  }
 }
 
 const list = new List('list #1.0', [
-	new Item('item #1.1'),
-	new Item('item #1.2'),
-	new List('list #2.0', [
-		new Item('item #2.1'),
-		new Item('item #2.2'),
-		new Item('item #2.3')
-	])
+  new Item('item #1.1'),
+  new Item('item #1.2'),
+  new List('list #2.0', [
+    new Item('item #2.1'),
+    new Item('item #2.2'),
+    new Item('item #2.3')
+  ])
 ]);
 
 list.getContentLength(); // 63
@@ -124,22 +121,22 @@ list.getContentLength(); // 63
 
 ```js
 class List {
-	children = [];  
-	  
-	constructor(content = '', children = []) {  
-	  this.content = content;  
-	  this.children.push(...children);  
-	}
+  children = [];  
+    
+  constructor(content = '', children = []) {  
+    this.content = content;  
+    this.children.push(...children);  
+  }
 
-	getContent (buffer = []) {  
-	  buffer.push(this.content, []);  
-	  
-	  for (const child of this.children) {  
-	    child.getContent(buffer.at(-1));  
-	  }  
-	  
-	  return buffer;  
-	}
+  getContent (buffer = []) {  
+    buffer.push(this.content, []);  
+    
+    for (const child of this.children) {  
+      child.getContent(buffer.at(-1));  
+    }  
+    
+    return buffer;  
+  }
 }
 
 class Item {  
@@ -155,27 +152,27 @@ class Item {
 }
 
 const list = new List('list #1.0', [
-	new Item('item #1.1'),
-	new Item('item #1.2'),
-	new List('list #2.0', [
-		new Item('item #2.1'),
-		new Item('item #2.2'),
-		new Item('item #2.3')
-	])
+  new Item('item #1.1'),
+  new Item('item #1.2'),
+  new List('list #2.0', [
+    new Item('item #2.1'),
+    new Item('item #2.2'),
+    new Item('item #2.3')
+  ])
 ]);
 
 const print = (content) => {
-	const printContent = (arr = [], index = 0) => {  
-	  for (const item of arr) {  
-	    if (Array.isArray(item)) {  
-	      printContent(item, index + 1);  
-	    } else {  
-	      console.log(`${'*'.repeat(index)} ${item}`);  
-	    }  
-	  }  
-	};  
+  const printContent = (arr = [], index = 0) => {  
+    for (const item of arr) {  
+      if (Array.isArray(item)) {  
+        printContent(item, index + 1);  
+      } else {  
+        console.log(`${'*'.repeat(index)} ${item}`);  
+      }  
+    }  
+  };  
 
-	printContent(content, 0);
+  printContent(content, 0);
 };
 
 print(list.getContent());

@@ -1,6 +1,6 @@
 ### Bridge <!-- element style="display:none" -->
 
-![[bridge-1.png | 500 ]](https://refactoring.guru/design-patterns/bridge)
+![[bridge-1.png | 500 ]](./imgs/bridge.png)
 
 note: 
 

@@ -1,6 +1,6 @@
 ### Builder <!-- element style="display:none" -->
 
-![[builder.png | 400]]
+![[builder.png | 400]](./imgs/builder.png)
 
 Позволяет создавать сложные объекты пошагово.
 

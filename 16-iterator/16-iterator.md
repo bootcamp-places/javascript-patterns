@@ -1,6 +1,6 @@
 ### Iterator <!-- element style="display:none" -->
 
-![[Iterator.png | 400]](./imgs/iterator.png)
+![[iterator.png | 400]](./imgs/iterator.png)
 
 Позволяет итерировать некоторую сущность не раскрывая ее внутреннего устройства.
 

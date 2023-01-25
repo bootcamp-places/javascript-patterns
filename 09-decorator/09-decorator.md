@@ -1,6 +1,6 @@
 ### Decorator <!-- element style="display:none" -->
 
-![[decorator.png | 400]](../imgs/decorator.png)
+![[decorator.png | 400]](./imgs/decorator.png)
 
 С помощью "оберток" реализует динамическое расширение функционала используя механизм агрегации или композиции.
 

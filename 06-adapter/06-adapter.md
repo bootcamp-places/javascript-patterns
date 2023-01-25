@@ -1,6 +1,6 @@
 ### Adapter <!-- element style="display:none" -->
 
-![[adapter.png | 400]]
+![[adapter.png | 400]](./imgs/adapter.png)
 
 Позволяет объектам с несовместимыми интерфейсами работать вместе
 

@@ -1,6 +1,6 @@
 ### Factory Method <!-- element style="display:none" -->
 
-![[factory-method.png | 400]](../imgs/factory-method.png)
+![[factory-method.png | 400]](./imgs/factory-method.png)
 
 Определяет общий интерфейс для создания объектов в суперклассе, позволяя подклассам изменять тип создаваемых объектов.
 
