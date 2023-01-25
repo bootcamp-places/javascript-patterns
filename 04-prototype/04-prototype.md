@@ -2,7 +2,7 @@
 
 ![[prototype-1.png | 400]](../imgs/prototype-1.png)
 
-Позволяет копировать объекты, не вдаваясь в подробности их реализации.
+Позволяет копировать объекты, не вдаваясь в подробности иx реализации.
 
 note:
 
@@ -33,6 +33,4 @@ class Card {
 const card1 = new Card({ title: 'first card', description: 'some description'});  
 const card2 = card1.clone();
 ```
-
-
 

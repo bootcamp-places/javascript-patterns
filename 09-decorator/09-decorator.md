@@ -20,7 +20,6 @@ flowchart LR
 --
 
 #### Decorator: example #1
-
 ```js
 // connect-to-store.js
 const globalStore = {};
