@@ -1,5 +1,11 @@
-# Abstract Factory
+### Abstract Factory <!-- element style="display:none" -->
 
+![[abstract-factory.png]](./imgs/abstract-factory.png)
+
+
+Позволяет создавать семейства связанных объектов, не привязываясь к конкретным классам создаваемых объектов.
+
+::: block <!-- element style="display: none;" -->
 ```mermaid
 flowchart TB
   A[Abstract Factory] -- create --> B[Concrete Factory]
@@ -7,36 +13,45 @@ flowchart TB
   B -- new --> D[Product 2]
   B -- new --> E[Product 3]
 ```
+:::
 
-Example:
+--
+
+#### Abstract factory: example #1
 
 ```js
-class SuccessNotification {}
-
-class ErrorNotification {}
-
-class InfoNotification {}
+class SuccessNotificationFactory {}
+class ErrorNotificationFactory {}
+class InfoNotificationFactory {}
 
 class NotificationFactory {
   static create (type = '') {
     const notificationTypes = {
-      succes: SuccessNotification,
-      error: ErrorNotification,
-      info: InfoNotification
+      succes: SuccessNotificationFactory,
+      error: ErrorNotificationFactory,
+      info: InfoNotificationFactory
     };
     
     return notificationTypes[type];
   }
 }
-
-const SuccessNotification = NotificationFactory.create('success');
-
-const success1 = new SuccessNotification();
-const success2 = new SuccessNotification();
-const success3 = new SuccessNotification();
-
-const ErrorNotification = NotificationFactory.create('error');
-
-const error1 = new ErrorNotification();
-const error1 = new ErrorNotification();
 ```
+
+--
+
+#### Abstract factory: example #1
+
+```js
+const SuccessNotificationF = NotificationFactory.create('success');
+
+const success1 = new SuccessNotificationF();
+const success2 = new SuccessNotificationF();
+const success3 = new SuccessNotificationF();
+
+const ErrorNotificationF = NotificationFactory.create('error');
+
+const error1 = new ErrorNotificationF();
+const error1 = new ErrorNotificationF();
+```
+
+back: [[📖 presentation#Abstract Factory]] <!-- element style="display:none" -->

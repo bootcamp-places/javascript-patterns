@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Command</title>
+</head>
+<body>
+
+<div>
+  <button id="saveBtn">Save</button>
+  <button id="printBtn">Print</button>
+  <button id="forwardBtn">Forward</button>
+  <button id="backBtn">Back</button>
+
+  <div>
+    <textarea id="textInput"></textarea>
+  </div>
+</div>
+
+<script>
+  class Button {
+    constructor(command) {
+      this.command = command;
+
+      this.createElement();
+      this.initListeners();
+    }
+
+    createElement () {
+      this.element = document.createElement('div');
+    }
+
+    initListeners () {
+      this.element.addEventListener('click', () => {
+        this.command.execute();
+      });
+    }
+  }
+
+  class HotKeysManager {
+    list = new Map();
+
+    register (keys = [], command) {
+      // Todo: rethink, may it be vice versa?
+      this.list.set(command, keys);
+    }
+
+    initialize () {
+      // keys [ctrl, shift, p]
+      // back.ctrlKey, event.shiftKey and event.altKey, event.key
+      // [event => event.ctrlKey, event => event.altKey, event => event.key === someKey]
+
+      this.list.forEach((command, keys) => {
+        document.addEventListener('keydown', (event) => {
+          command.execute();
+        })
+      });
+    }
+  }
+
+  class Command {
+    constructor(actionsManager) {
+      this.actionsManager = actionsManager;
+    }
+
+    execute () {
+      // abstract
+    }
+  }
+
+  class Save extends Command {
+    constructor(actionsManager) {
+      super(actionsManager);
+    }
+
+    execute() {
+      this.actionsManager.save();
+    }
+  }
+
+  class Print extends Command {
+    constructor(actionsManager) {
+      super(actionsManager);
+    }
+
+    execute() {
+      this.actionsManager.print();
+    }
+  }
+
+  class Back extends Command {
+    constructor() {
+      super();
+    }
+  }
+
+  class Forward extends Command {
+    constructor() {
+      super();
+    }
+  }
+
+  class ActionsManager {
+
+  }
+
+  const actionsManager = new ActionsManager();
+  const save = new Save(actionsManager);
+  const print = new Print(actionsManager);
+  const forward = new Forward(actionsManager);
+  const back = new Back(actionsManager);
+
+  saveBtn.addEventListener('click', () => {
+    save.execute();
+  });
+
+  printBtn.addEventListener('click', () => {
+    print.execute();
+  });
+
+  forwardBtn.addEventListener('click', () => {
+    forward.execute();
+  });
+
+  backBtn.addEventListener('click', () => {
+    back.execute();
+  });
+
+  document.addEventListener('keydown', () => {
+    if (true) {
+      save.execute();
+    }
+  });
+
+  // ===================================
+  const isIterable = (obj) => {
+    return typeof obj[Symbol.iterator] === 'function';
+  };
+
+</script>
+</body>
+</html>
