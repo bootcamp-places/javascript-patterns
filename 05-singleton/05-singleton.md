@@ -1,6 +1,15 @@
 ### Singleton <!-- element style="display:none" -->
 
+<split left="1" right="1">
+
 ![[singleton.png | 500]](./imgs/singleton.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Creational
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Гарантирует, что у класса есть только один экземпляр
 

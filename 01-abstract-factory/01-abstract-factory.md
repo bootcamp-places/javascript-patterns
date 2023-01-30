@@ -1,6 +1,15 @@
 ### Abstract Factory <!-- element style="display:none" -->
 
-![[abstract-factory.png | 400]](./imgs/abstract-factory.png)
+<split left="1" right="1">
+
+![[abstract-factory.png | 500]](./imgs/abstract-factory.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Creational
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Позволяет создавать семейства связанных объектов, не привязываясь к конкретным классам создаваемых объектов.
 
@@ -18,7 +27,7 @@ flowchart TB
 
 #### Abstract factory: example #1
 
-```js
+```js [|7-11|13]
 class SuccessNotificationFactory {}
 class ErrorNotificationFactory {}
 class InfoNotificationFactory {}

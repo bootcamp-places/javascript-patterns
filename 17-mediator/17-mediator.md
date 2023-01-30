@@ -1,8 +1,18 @@
 ### Mediator <!-- element style="display:none" -->
 
+<split left="1" right="1">
+
 ![[mediator.png | 400]](./imgs/mediator.png)
 
-Позволяет уменьшить связанность множества классов между собой, благодаря перемещению этих связей в один класс-посредник.
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Behavioral
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
+
+Позволяет уменьшить связанность множества классов между собой, 
+благодаря перемещению этих связей в один класс-посредник.
 
 ::: block <!-- element style="display: none;" -->
 

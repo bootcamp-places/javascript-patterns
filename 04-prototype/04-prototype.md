@@ -1,6 +1,15 @@
 ### Prototype <!-- element style="display:none" -->
 
-![[prototype-1.png | 400]](./imgs/prototype.png)
+<split left="1" right="1">
+
+![[prototype-1.png | 500]](./imgs/prototype.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Creational
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Позволяет копировать объекты, не вдаваясь в подробности иx реализации.
 
@@ -12,7 +21,7 @@ In JavaScript Prototype pattern may be implemented via `Object.create` method
 
 #### Prototype: example #1
 
-```js
+```js [|10-15 | 18-19]
 class Card {  
   constructor({  
     title = '',  

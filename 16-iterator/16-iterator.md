@@ -1,6 +1,15 @@
 ### Iterator <!-- element style="display:none" -->
 
-![[iterator.png | 400]](./imgs/iterator.png)
+<split left="1" right="1">
+
+![[iterator.png | 500]](./imgs/iterator.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Behavioral
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Позволяет итерировать некоторую сущность не раскрывая ее внутреннего устройства.
 
@@ -8,7 +17,7 @@
 
 #### Iterator: code example #1
 
-```js
+```js [|]
 const range = {
   from: 1,
   to: 5,

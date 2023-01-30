@@ -1,6 +1,16 @@
 ### Builder <!-- element style="display:none" -->
 
-![[builder.png | 400]](./imgs/builder.png)
+
+<split left="1" right="1">
+
+![[builder.png | 500]](./imgs/builder.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Creational
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Позволяет создавать сложные объекты пошагово.
 
@@ -36,7 +46,7 @@ performTransaction(request);
 
 #### Builder: example #1
 
-```js
+```js [|13, 19, 25, 31, 37, 43, 49, 55, 59]
 class PaymentRequest {
   constructor() {
     this.request = {

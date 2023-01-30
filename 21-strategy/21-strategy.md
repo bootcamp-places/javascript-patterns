@@ -1,6 +1,15 @@
 ### Strategy <!-- element style="display:none" -->
 
-![[strategy.png | 400]](./imgs/strategy.png)
+<split left="1" right="1">
+
+![[strategy.png | 500]](./imgs/strategy.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Behavioral
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Определяет семейство схожих алгоритмов, после чего алгоритмы можно взаимозаменять прямо во время исполнения программы
 

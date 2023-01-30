@@ -1,6 +1,15 @@
 ### Observer <!-- element style="display:none" -->
 
-![[observer.png | 400]](./imgs/observer.png)
+<split left="1" right="1">
+
+![[observer.png | 500]](./imgs/observer.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Behavioral
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Позволяет создать механизм подписки, который позволит некоторым сущностям следить и реагировать на события, происходящие в других сущностях, как следствие обеспечивая слабую связанность.
 

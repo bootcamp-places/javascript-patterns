@@ -1,6 +1,15 @@
 ### Chain Of Responsibility <!-- element style="display:none" -->
 
-![[chain-of-responsibility.png | 600]](./imgs/chain-of-responsibility.png)
+<split left="1" right="1">
+
+![[chain-of-responsibility.png | 500]](./imgs/chain-of-responsibility.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Behavioral
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Позволяет передавать запросы последовательно по цепочке обработчиков. 
 Каждый последующий обработчик решает, может ли он обработать запрос сам и 
@@ -30,7 +39,7 @@ flowchart LR
 
 #### Chain of Responsibility: example #1
 
-```js
+```js [|2,10]
 class Handler {
   handle(state, action) {
     if (this.nextHandler) {
@@ -82,13 +91,13 @@ class PostsHandler extends Handler {
 
 #### Chain of Responsibility: example #1
 
-```js
+```js [|1-9|11-14|16-18]
 const createRootReducer = (handlers = []) => {
-	for (const [index, handler] of handlers.entries()) {
-		handler.setNext(handlers[index + 1]);
-	}
+  for (const [index, handler] of handlers.entries()) {
+    handler.setNext(handlers[index + 1]);
+  }
 
-	const [firstHandler] = handlers;
+  const [firstHandler] = handlers;
 
   return firstHandler;
 };

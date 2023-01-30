@@ -1,8 +1,18 @@
 ### Template Method <!-- element style="display:none" -->
 
-![[template-method.png | 400]](./imgs/template-method.png)
+<split left="1" right="1">
 
-Определяет скелет алгоритма, перекладывая ответственность за некоторые его шаги на подклаcсы или методы
+![[template-method.png | 500]](./imgs/template-method.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Behavioral
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
+
+Определяет скелет алгоритма, перекладывая ответственность за некоторые его шаги 
+на подклаcсы или методы
 
 ::: block <!-- element style="display: none;" -->
 

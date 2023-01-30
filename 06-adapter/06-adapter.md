@@ -1,6 +1,15 @@
 ### Adapter <!-- element style="display:none" -->
 
-![[adapter.png | 400]](./imgs/adapter.png)
+<split left="1" right="1">
+
+![[adapter.png | 500]](./imgs/adapter.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Structural
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Позволяет объектам с несовместимыми интерфейсами работать вместе
 
@@ -16,7 +25,7 @@ flowchart LR
 
 #### Adapter: example #1
 
-```js
+```js [|5,8,17,20, 26-35]
 // adapterA.js
 import libA from './libA.js';
 

@@ -1,6 +1,15 @@
 ### Composite <!-- element style="display:none" -->
 
-![[composite.png | 400]](./imgs/composite.png)
+<split left="1" right="1">
+
+![[composite.png | 500]](./imgs/composite.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Structural
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Позволяет сгруппировать множество объектов в древовидную структуру, 
 а затем работать с ней так, как будто это единичный объект.
@@ -9,7 +18,7 @@
 
 #### Composite: example #1
 
-![[composite.png | 600]]
+![[composite-1.png | 400]]
 
 --
 
@@ -42,7 +51,7 @@ const list = new Comment({
 
 #### Composite: example #1
 
-```js
+```js [|12-20, 23|]
 class Comment {  
   constructor({  
     id = 0,  
@@ -72,7 +81,7 @@ console.error(list.getSize()); // 4
 
 #### Composite: example #2
 
-```js
+```js [|9-17, 25-27, 40]
 class List {
   children = [];
 
@@ -119,7 +128,7 @@ list.getContentLength(); // 63
 
 #### Composite: example #2
 
-```js
+```js [|9-17, 25-29, 42-56]
 class List {
   children = [];  
     
@@ -161,7 +170,7 @@ const list = new List('list #1.0', [
   ])
 ]);
 
-const print = (content) => {
+const print = content => {
   const printContent = (arr = [], index = 0) => {  
     for (const item of arr) {  
       if (Array.isArray(item)) {  

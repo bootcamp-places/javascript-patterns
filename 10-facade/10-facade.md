@@ -1,6 +1,15 @@
 ### Facade <!-- element style="display:none" -->
 
-![[facade.png | 400]](./imgs/facade.png)
+<split left="1" right="1">
+
+![[facade.png | 500]](./imgs/facade.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Structural
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Предоставляет простой интерфейс к сложной сущности: набору методов класса, библиотеке, фреймворку и т.д.
 
@@ -21,7 +30,7 @@ flowchart TB
 
 #### Facade: example #1
 
-```js{1, 2-3}
+```js [|2-8| 19]
 class Component {
   async update () {
     const data = await this.loadData();

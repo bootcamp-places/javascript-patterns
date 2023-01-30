@@ -1,6 +1,15 @@
 ### Proxy <!-- element style="display:none" -->
 
-![[proxy.png | 400]](./imgs/proxy.png)
+<split left="1" right="1">
+
+![[proxy.png | 500]](./imgs/proxy.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Structural
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Позволяет подставлять вместо реальных объектов специальные объекты-заменители
 
@@ -17,7 +26,7 @@ flowchart LR
 
 #### Proxy: example #1
 
-```js
+```js []
 const user = {
   nickname: 'John'
 };
@@ -39,7 +48,7 @@ proxyUser.foo // Uncaught ReferenceError: There is no propery: "foo"
 
 #### Proxy: example #2
 
-```js
+```js [| 3, 8, 12, 22| 19, 23-25 | 49]
 // request.js
 class Proxy {
   proxyCache = new Map();

@@ -1,6 +1,15 @@
 ### Decorator <!-- element style="display:none" -->
 
-![[decorator.png | 400]](./imgs/decorator.png)
+<split left="1" right="1">
+
+![[decorator.png | 500]](./imgs/decorator.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Structural
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 С помощью "оберток" реализует динамическое расширение функционала используя механизм агрегации или композиции.
 
@@ -20,7 +29,7 @@ flowchart LR
 --
 
 #### Decorator: example #1
-```js
+```js [|4, 19]
 // connect-to-store.js
 const globalStore = {};
 

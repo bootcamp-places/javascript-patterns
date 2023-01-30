@@ -1,6 +1,15 @@
 ### Visitor <!-- element style="display:none" -->
 
-![[visitor-1.png]](./imgs/visitor.png)
+<split left="1" right="1">
+
+![[visitor.png]](./imgs/visitor.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Behavioral
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Позволяет добавлять в программу новые операции, не изменяя классы объектов, над которыми эти операции могут выполняться.
 
@@ -37,7 +46,7 @@ console.error(list.getSize()); // 4
 
 #### Visitor: Composite pattern improvement
 
-```js
+```js [| 12-20]
 class Comment {  
   constructor({  
     id = '',  
@@ -79,7 +88,7 @@ console.error(list.getSize());
 
 #### Visitor: Composite pattern improvement. Solution part #2
 
-```js
+```js [|]
 class Visitor {  
   constructor(compositeItem) {  
     this.compositeItem = compositeItem;  

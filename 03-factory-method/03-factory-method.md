@@ -1,6 +1,16 @@
 ### Factory Method <!-- element style="display:none" -->
 
-![[factory-method.png | 400]](./imgs/factory-method.png)
+
+<split left="1" right="1">
+
+![[factory-method.png | 500]](./imgs/factory-method.png)
+
+::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
+- Type: Creational
+- Complexity: ⭐⭐⭐
+::: 
+
+</split>
 
 Определяет общий интерфейс для создания объектов в суперклассе, позволяя подклассам изменять тип создаваемых объектов.
 
