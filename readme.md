@@ -1,6 +1,6 @@
-# GoF design patterns with JavaScript examples
+# Patterns with JavaScript examples
 
-## Patterns list
+## GoF design patterns list
 
 ### Creational Design Patterns
 
@@ -33,3 +33,7 @@
 - 📗 [Template Method](./22-template-method/22-template-method.md)
 - 📕 [Visitor](./23-visitor/23-visitor.md)
 - 📕 [Interpreter](./15-interpreter/15-interpreter.md)
+
+## Other patterns
+
+- 📕 [Flux](./24-flux/24-flux.md)

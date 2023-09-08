@@ -261,6 +261,12 @@ Todo: add practice
 
 ---
 
+### Flux
+
+![[24-flux]]
+
+---
+
 ## Patterns comparison
 
 - Observer vs Mediator
