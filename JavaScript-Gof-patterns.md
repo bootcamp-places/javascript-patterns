@@ -25,6 +25,7 @@ height: 900
 ![[gof-patterns.png | 800]]
 
 note:
+
 - Design patterns are common architectural approaches.
 - Popularized by the Gang of Four book 1994 (Smalltalk and C++)
 - Universally relevant
@@ -36,22 +37,24 @@ note:
 ![[05-singleton]]
 
 --
+
 ### Singleton: resources:
 
 ::: block <!-- element class="app-resources-block" -->
+
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/store/index.js#L9
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/components/notification/notification-manager/index.js#L8
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/router/index.js#L16
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/observer/index.js#L7
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/storage/sync-storage.js#L8
-:::
+  :::
 
 --
 
 ### Singleton: time to practice
 
 ~3 min
-https://patterns.bootcamp.place/js-track/patterns/singleton
+https://qa-online-editor.bootcamp.place/js-track/patterns/singleton
 
 ---
 
@@ -64,15 +67,16 @@ https://patterns.bootcamp.place/js-track/patterns/singleton
 ### Adapter: resources
 
 ::: block <!-- element class="app-resources-block" -->
+
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/storage/local-storages.service.js#L1
-:::
+  :::
 
 --
 
 ### Adapter: time to practice
 
 ~3min
-https://patterns.bootcamp.place/js-track/patterns/adapter
+https://qa-online-editor.bootcamp.place/js-track/patterns/adapter
 
 ---
 
@@ -85,18 +89,19 @@ https://patterns.bootcamp.place/js-track/patterns/adapter
 ### Decorator: resources
 
 ::: block <!-- element class="app-resources-block" -->
+
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/pages/cart/index.js#L87
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/components/search/debounce.js#L1
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/store/connect.js#L1
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/observer/connect.js#L3
-:::
+  :::
 
 --
 
 ### Decorator: time to practice
 
 ~3min
-https://patterns.bootcamp.place/js-track/patterns/decorator
+https://qa-online-editor.bootcamp.place/js-track/patterns/decorator
 
 ---
 
@@ -109,19 +114,20 @@ https://patterns.bootcamp.place/js-track/patterns/decorator
 ### Facade: resources
 
 ::: block <!-- element class="app-resources-block" -->
+
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/components/infinity-list/index.js#L43
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/pages/main/index.js#L138
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/pages/cart/index.js#L19
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/pages/wishlist/index.js#L33
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/pages/wishlist/index.js#L101
-:::
+  :::
 
 --
 
 ### Facade: time to practice
 
 ~2min
-https://patterns.bootcamp.place/js-track/patterns/facade
+https://qa-online-editor.bootcamp.place/js-track/patterns/facade
 
 ---
 
@@ -134,7 +140,7 @@ https://patterns.bootcamp.place/js-track/patterns/facade
 ### Template Method: time to practice
 
 ~6min
-https://patterns.bootcamp.place/js-track/patterns/templateMethod
+https://qa-online-editor.bootcamp.place/js-track/patterns/templateMethod
 
 ---
 
@@ -147,7 +153,7 @@ https://patterns.bootcamp.place/js-track/patterns/templateMethod
 ### Flyweight: time to practice
 
 ~6min
-https://patterns.bootcamp.place/js-track/patterns/flyweight
+https://qa-online-editor.bootcamp.place/js-track/patterns/flyweight
 
 ---
 
@@ -160,16 +166,17 @@ https://patterns.bootcamp.place/js-track/patterns/flyweight
 ### Factory Method: resources
 
 ::: block <!-- element class="app-resources-block" -->
+
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/components/notification/notification-manager/index.js#L30
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/storage/sync-storage.js#L17
-:::
+  :::
 
 --
 
 ### Factory Method: time to practice
 
 ~3min
-https://patterns.bootcamp.place/js-track/patterns/factoryMethod
+https://qa-online-editor.bootcamp.place/js-track/patterns/factoryMethod
 
 ---
 
@@ -182,7 +189,7 @@ https://patterns.bootcamp.place/js-track/patterns/factoryMethod
 ### Strategy: time to practice
 
 ~3min
-https://patterns.bootcamp.place/js-track/patterns/strategy
+https://qa-online-editor.bootcamp.place/js-track/patterns/strategy
 
 ---
 
@@ -195,15 +202,16 @@ https://patterns.bootcamp.place/js-track/patterns/strategy
 ### Observer: resources
 
 ::: block <!-- element class="app-resources-block" -->
+
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/observer/index.js#L1
-:::
+  :::
 
 --
 
 ### Observer: time to practice
 
 ~3min
-https://patterns.bootcamp.place/js-track/patterns/observer
+https://qa-online-editor.bootcamp.place/js-track/patterns/observer
 
 ---
 
@@ -216,7 +224,7 @@ https://patterns.bootcamp.place/js-track/patterns/observer
 ### Prototype: time to practice
 
 ~6min
-https://patterns.bootcamp.place/js-track/patterns/prototype
+https://qa-online-editor.bootcamp.place/js-track/patterns/prototype
 
 ---
 
@@ -229,15 +237,16 @@ https://patterns.bootcamp.place/js-track/patterns/prototype
 ### Builder: resources
 
 ::: block <!-- element class="app-resources-block" -->
+
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/api/index.js#L3
-:::
+  :::
 
 --
 
 ### Builder: time to practice
 
 ~5min
-https://patterns.bootcamp.place/js-track/patterns/builder
+https://qa-online-editor.bootcamp.place/js-track/patterns/builder
 
 ---
 
@@ -250,7 +259,7 @@ https://patterns.bootcamp.place/js-track/patterns/builder
 ### Iterator: time to practice
 
 ~3min
-https://patterns.bootcamp.place/js-track/patterns/iterator
+https://qa-online-editor.bootcamp.place/js-track/patterns/iterator
 
 ---
 
@@ -263,15 +272,16 @@ https://patterns.bootcamp.place/js-track/patterns/iterator
 ### Proxy: resources
 
 ::: block <!-- element class="app-resources-block" -->
+
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/request/proxy.js#L1
-:::
+  :::
 
 --
 
 ### Proxy: time to practice
 
 ~3min
-https://patterns.bootcamp.place/js-track/patterns/proxy
+https://qa-online-editor.bootcamp.place/js-track/patterns/proxy1
 
 ---
 
@@ -284,15 +294,16 @@ https://patterns.bootcamp.place/js-track/patterns/proxy
 ### Mediator: resources
 
 ::: block <!-- element class="app-resources-block" -->
+
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/store/index.js#L1
-:::
+  :::
 
 --
 
 ### Mediator: time to practice
 
 ~10min
-https://patterns.bootcamp.place/js-track/patterns/mediator
+https://qa-online-editor.bootcamp.place/js-track/patterns/mediator
 
 ---
 
@@ -304,17 +315,17 @@ https://patterns.bootcamp.place/js-track/patterns/mediator
 
 ### Abstract Factory: resources
 
-
 ::: block <!-- element class="app-resources-block" -->
+
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/components/notification/notification/index.js#L3
-::: 
+  :::
 
 --
 
 ### Abstract Factory: time to practice
 
 ~5min
-https://patterns.bootcamp.place/js-track/patterns/abstractFactory
+https://qa-online-editor.bootcamp.place/js-track/patterns/abstractFactory
 
 ---
 
@@ -327,7 +338,7 @@ https://patterns.bootcamp.place/js-track/patterns/abstractFactory
 ### State: time to practice
 
 ~6min
-https://patterns.bootcamp.place/js-track/patterns/state
+https://qa-online-editor.bootcamp.place/js-track/patterns/state
 
 ---
 
@@ -339,7 +350,7 @@ https://patterns.bootcamp.place/js-track/patterns/state
 
 ### Chain of Responsibility: time to practice
 
-https://patterns.bootcamp.place/js-track/patterns/chainOfResponsibility
+https://qa-online-editor.bootcamp.place/js-track/patterns/chainOfResponsibility
 
 ---
 
@@ -352,7 +363,7 @@ https://patterns.bootcamp.place/js-track/patterns/chainOfResponsibility
 ### Composite: time to practice
 
 ~3min
-https://patterns.bootcamp.place/js-track/patterns/composite
+https://qa-online-editor.bootcamp.place/js-track/patterns/composite
 
 ---
 
@@ -365,7 +376,7 @@ https://patterns.bootcamp.place/js-track/patterns/composite
 ### Visitor: time to practice
 
 ~6min
-https://patterns.bootcamp.place/js-track/patterns/visitor
+https://qa-online-editor.bootcamp.place/js-track/patterns/visitor
 
 ---
 
@@ -378,8 +389,7 @@ https://patterns.bootcamp.place/js-track/patterns/visitor
 ### Bridge: time to practice
 
 ~1min
-https://patterns.bootcamp.place/js-track/patterns/bridge
-
+https://qa-online-editor.bootcamp.place/js-track/patterns/bridge
 
 ---
 
@@ -391,8 +401,7 @@ https://patterns.bootcamp.place/js-track/patterns/bridge
 
 ### Memento: time to practice
 
-https://patterns.bootcamp.place/js-track/patterns/memento
-
+https://qa-online-editor.bootcamp.place/js-track/patterns/memento
 
 ---
 
@@ -405,11 +414,11 @@ https://patterns.bootcamp.place/js-track/patterns/memento
 ### Command: time to practice
 
 ~3min
-https://patterns.bootcamp.place/js-track/patterns/command
+https://qa-online-editor.bootcamp.place/js-track/patterns/command
 
 ---
 
-## Q&A 
+## Q&A
 
 - Observer vs Mediator?
 - Factory method vs Abstract factory?
