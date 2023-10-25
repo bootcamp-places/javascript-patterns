@@ -6,12 +6,17 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Structural
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет объектам с несовместимыми интерфейсами работать вместе
+Allows objects with incompatible interfaces to work together.
+An adapter turns the interface of one class into the interface expected by the client.
+
+note:
+
+Дозволяє об'єктам з несумісними інтерфейсами працювати разом.
+Адаптер перетворює інтерфейс одного класу на інтерфейс, очікуваний клієнтом.
 
 ::: block <!-- element style="display: none;" -->
 ```mermaid
@@ -63,4 +68,4 @@ class Component {
 }
 ```
 
-back: [[📖 presentation#Adapter]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Adapter]] <!-- element style="display:none" -->

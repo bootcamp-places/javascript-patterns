@@ -6,12 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Creational
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Гарантирует, что у класса есть только один экземпляр
+Ensures that a class has only one instance
+
+note:
+
+Гарантує, що клас має лише один екземпляр
 
 --
 
@@ -62,4 +65,4 @@ const db = createDbConnection();
 console.log(db.connect() === db.connect()); // true
 ```
 
-back: [[📖 presentation#Singleton]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Singleton]] <!-- element style="display:none" -->

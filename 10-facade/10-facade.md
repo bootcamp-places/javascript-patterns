@@ -6,12 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Structural
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Предоставляет простой интерфейс к сложной сущности: набору методов класса, библиотеке, фреймворку и т.д.
+Provides a simple interface to a complex entity: a set of class methods, a library, a framework, etc.
+
+note:
+
+Надає простий інтерфейс до складної сутності: набору методів класу, бібліотеки, фреймворку тощо.
 
 ::: block <!-- element style="display: none;" -->
 
@@ -29,6 +32,8 @@ flowchart TB
 --
 
 #### Facade: example #1
+ 
+![[facade-1.png]](./imgs/facade-1.png)
 
 ```js [|2-8| 19]
 class Component {
@@ -52,4 +57,4 @@ const component = new Component();
 component.update();
 ```
 
-back: [[📖 presentation#Facade]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Facade]] <!-- element style="display:none" -->

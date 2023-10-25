@@ -6,13 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Behavioral
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет уменьшить связанность множества классов между собой, 
-благодаря перемещению этих связей в один класс-посредник.
+Allows you to reduce the coupling of many classes among themselves by moving these connections into one intermediary class.
+
+note:
+
+Дозволяє зменшити пов'язаність безлічі класів між собою завдяки переміщенню цих зв'язків в один клас-посередник.
 
 ::: block <!-- element style="display: none;" -->
 
@@ -106,4 +108,4 @@ peter.send(john, "Hey! New one message");
 chatroom.broadcast('hi all');
 ```
 
-back: [[📖 presentation#Mediator]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Mediator]] <!-- element style="display:none" -->

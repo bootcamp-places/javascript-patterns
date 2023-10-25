@@ -6,13 +6,17 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Structural
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет сгруппировать множество объектов в древовидную структуру, 
-а затем работать с ней так, как будто это единичный объект.
+Allows you to group many objects into a tree structure,
+and then work with it as if it were a single object.
+
+note:
+
+Дозволяє згрупувати безліч об'єктів у деревоподібну структуру,
+а потім працювати з нею так, ніби це одиничний об'єкт.
 
 --
 
@@ -187,4 +191,4 @@ const print = content => {
 print(list.getContent());
 ```
 
-back: [[📖 presentation#Composite]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Composite]] <!-- element style="display:none" -->

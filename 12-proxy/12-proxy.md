@@ -6,12 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Structural
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет подставлять вместо реальных объектов специальные объекты-заменители
+Allows you to substitute special substitute objects instead of real objects
+
+note: 
+
+Дозволяє підставляти замість реальних об'єктів спеціальні об'єкти-замінники
 
 ::: block <!-- element style="display: none;" -->
 
@@ -103,4 +106,4 @@ proxyHttpRequest.get('url-1'); // Request to server and resposne
 proxyHttpRequest.get('url-1'); // Request to cache and response
 ```
 
-back: [[📖 presentation#Proxy]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Proxy]] <!-- element style="display:none" -->

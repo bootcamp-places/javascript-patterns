@@ -6,12 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Structural
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-С помощью "оберток" реализует динамическое расширение функционала используя механизм агрегации или композиции.
+With the help of "wrappers" it implements dynamic expansion of functionality using the mechanism of aggregation or composition.
+
+note:
+
+За допомогою "обгорток" реалізує динамічне розширення функціоналу використовуючи механізм агрегації або композиції.
 
 ::: block <!-- element style="display: none;" -->
 
@@ -52,4 +55,4 @@ export default connectToStore(Component);
 ```
 
 
-back: [[📖 presentation#Decorator]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Decorator]] <!-- element style="display:none" -->

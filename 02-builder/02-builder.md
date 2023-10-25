@@ -7,12 +7,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Creational
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет создавать сложные объекты пошагово.
+Allows you to create complex objects step by step.
+
+note:
+
+Дозволяє створювати складні об'єкти покроково.
 
 ::: block <!-- element style="display: none;" -->
 ```mermaid
@@ -110,4 +113,4 @@ class PaymentRequest {
 }
 ```
 
-back: [[📖 presentation#Builder]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Builder]] <!-- element style="display:none" -->

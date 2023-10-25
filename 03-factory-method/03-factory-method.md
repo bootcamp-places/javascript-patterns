@@ -7,12 +7,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Creational
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Определяет общий интерфейс для создания объектов в суперклассе, позволяя подклассам изменять тип создаваемых объектов.
+Defines a common interface for creating objects in a superclass, allowing subclasses to change the type of objects created.
+
+note:
+
+Визначає загальний інтерфейс для створення об'єктів у суперкласі, дозволяючи підкласам змінювати тип об'єктів, що створюються.
 
 --
 
@@ -77,4 +80,4 @@ class Component {
 }
 ```
 
-back: [[📖 presentation#Factory Method]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Factory Method]] <!-- element style="display:none" -->

@@ -6,12 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Behavioral
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет добавлять в программу новые операции, не изменяя классы объектов, над которыми эти операции могут выполняться.
+Allows you to add new operations to a program without changing the classes of objects on which these operations can be performed.
+
+note:
+
+Дозволяє додавати до програми нові операції, не змінюючи класи об'єктів, над якими ці операції можуть виконуватися.
 
 --
 
@@ -88,7 +91,7 @@ console.error(list.getSize());
 
 #### Visitor: Composite pattern improvement. Solution part #2
 
-```js [|]
+```js [|7-13]
 class Visitor {  
   constructor(compositeItem) {  
     this.compositeItem = compositeItem;  
@@ -141,4 +144,4 @@ class Comment {
 }
 ```
 
-back: [[📖 presentation#Visitor]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Visitor]] <!-- element style="display:none" -->

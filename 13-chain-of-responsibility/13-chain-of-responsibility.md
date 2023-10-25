@@ -6,14 +6,17 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Behavioral
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет передавать запросы последовательно по цепочке обработчиков. 
-Каждый последующий обработчик решает, может ли он обработать запрос сам и 
-стоит ли передавать запрос дальше по цепи.
+Allows you to transmit requests sequentially through a chain of handlers.
+Each subsequent handler decides whether it can process the request itself and Is it worth passing the request further down the chain?
+
+note: 
+
+Дозволяє передавати запити послідовно по ланцюжку обробників.
+Кожен наступний оброблювач вирішує, чи може він обробити запит сам і чи варто надсилати запит далі по ланцюгу.
 
 ::: block <!-- element style="display: none;" -->
 
@@ -112,4 +115,4 @@ console.log(rootReducer.handle({}, { type: "PERSON/UPDATE" }));
 console.log(rootReducer.handle({}, { type: "POSTS/GET" }));
 ```
 
-back: [[📖 presentation#Chain of Responsibility]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Chain of Responsibility]] <!-- element style="display:none" -->

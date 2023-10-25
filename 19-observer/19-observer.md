@@ -6,12 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Behavioral
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет создать механизм подписки, который позволит некоторым сущностям следить и реагировать на события, происходящие в других сущностях, как следствие обеспечивая слабую связанность.
+Allows you to create a subscription mechanism that will allow some entities to monitor and respond to events occurring in other entities, as a result providing loose coupling.
+
+note:
+
+Дозволяє створити механізм підписки, який дозволить деяким сутностям стежити та реагувати на події, що відбуваються в інших сутностях, як наслідок забезпечуючи слабку пов'язаність.
 
 ::: block <!-- element style="display: none;" -->
 

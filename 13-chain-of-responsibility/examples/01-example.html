@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chain of Responsibility</title>
+</head>
+<body>
+<script>
+  class Handler {
+    handle(state, action) {
+      if (this.nextHandler) {
+        return this.nextHandler.handle(state, action);
+      }
+
+      return state;
+    }
+
+    setNext(handler) {
+      this.nextHandler = handler;
+    }
+  }
+
+  class ProfileHandler extends Handler {
+    handle(state, action) {
+      if (action.type === "PERSON/UPDATE") {
+        return {
+          ...state,
+          // ... add person data
+          ...action.payload
+        };
+      }
+
+      return super.handle(state, action);
+    }
+  }
+
+  class PostsHandler extends Handler {
+    handle(state, action) {
+      if (action.type === "POSTS/GET") {
+        return {
+          ...state,
+          // ... add posts data
+          ...action.payload
+        };
+      }
+
+      return super.handle(state, action);
+    }
+  }
+
+  const createRootReducer = (handlers = []) => {
+    for (const [index, handler] of handlers.entries()) {
+      handler.setNext(handlers[index + 1]);
+    }
+
+    const [firstHandler] = handlers;
+
+    return firstHandler;
+  };
+
+  const rootReducer = createRootReducer([
+    new ProfileHandler(),
+    new PostsHandler()
+  ]);
+
+  console.log(rootReducer.handle(
+    {}, { type: "UNHANDLED" }
+  ));
+
+  console.log(
+    rootReducer.handle({}, {
+      type: "PERSON/UPDATE",
+      payload: {userId: 1 }
+    }
+  ));
+
+  console.log(rootReducer.handle({}, {
+    type: "POSTS/GET",
+    payload: {
+      posts: [{ postId: 1}, { postId: 2}, {postId: 3}]
+    }
+  }));
+</script>
+</body>
+</html>

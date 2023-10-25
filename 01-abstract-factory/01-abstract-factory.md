@@ -6,12 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Creational
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет создавать семейства связанных объектов, не привязываясь к конкретным классам создаваемых объектов.
+Allows you to create families of related objects without being tied to specific classes of the objects being created.
+
+note: 
+
+Дозволяє створювати сімейства пов'язаних об'єктів, не прив'язуючись до конкретних класів об'єктів, що створюються.
 
 ::: block <!-- element style="display: none;" -->
 ```mermaid
@@ -62,4 +65,4 @@ const error1 = new ErrorNotificationF();
 const error1 = new ErrorNotificationF();
 ```
 
-back: [[📖 presentation#Abstract Factory]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Abstract Factory]] <!-- element style="display:none" -->

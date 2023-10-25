@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visitor: example #3</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="module">
+  class MenuComposite {
+    accept (Visitor) {
+      new Visitor();
+    }
+  }
+
+  class Menu extends MenuComposite {
+    children = [];
+
+    constructor(title = '', children = []) {
+      super();
+
+      this.title = title;
+      this.children = children;
+    }
+
+    // other specific logic here
+  }
+
+  class MenuItem extends MenuComposite {
+    constructor(title = '') {
+      super();
+      this.title = title;
+    }
+
+    // other specific logic here
+  }
+
+  class Visitor {
+    constructor(component) {
+      this.component = component;
+      this.init();
+    }
+
+    init () {
+      if (this.component.children?.length) {
+        for (const child of this.component.children) {
+          child.accept(Visitor);
+        }
+      }
+
+      this.addCreateElement();
+      this.addRender();
+    }
+
+    addRender () {
+      if (this.component instanceof Menu) {
+        this.component.render = () => {
+          this.component.element = this.component.createElement();
+          const ulElement = this.component.element.querySelector('ul');
+
+          for (const child of this.component.children) {
+            child.render();
+            ulElement.append(child.element);
+          }
+        }
+      }
+
+      if (this.component instanceof MenuItem) {
+        this.component.render = () => {
+          this.component.element = this.component.createElement();
+          this.component.element.append(this.component.title);
+        }
+      }
+    }
+
+    addCreateElement () {
+      if (this.component instanceof Menu) {
+        this.component.createElement = () => {
+          const wrapper = document.createElement('div');
+
+          wrapper.innerHTML = `
+           <div>
+             <span>${this.component.title}</span>
+             <ul></ul>
+           </div>
+          `;
+
+          return wrapper.firstElementChild
+        }
+      }
+
+      if (this.component instanceof MenuItem) {
+        this.component.createElement = () => {
+          const wrapper = document.createElement('div');
+
+          wrapper.innerHTML = `
+            <li></li>
+          `;
+
+          return wrapper.firstElementChild;
+        }
+      }
+    }
+  }
+
+  const list = new Menu('list #1.0', [
+    new MenuItem('item #1.1'),
+    new MenuItem('item #1.2'),
+    new Menu('list #2.0', [
+      new MenuItem('item #2.1'),
+      new MenuItem('item #2.2'),
+      new MenuItem('item #2.3'),
+      new Menu('list #3.0', [
+        new MenuItem('item #3.1'),
+        new MenuItem('item #3.2'),
+      ])
+    ])
+  ]);
+
+  list.accept(Visitor);
+  list.render();
+  root.append(list.element);
+</script>
+</body>
+</html>

@@ -6,13 +6,16 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Behavioral
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Определяет скелет алгоритма, перекладывая ответственность за некоторые его шаги 
-на подклаcсы или методы
+Defines the skeleton of an algorithm, assigning responsibility for some of its steps into subclasses or methods
+
+note: 
+
+Визначає скелет алгоритму, перекладаючи відповідальність за деякі його кроки на підкласи чи методи
+
 
 ::: block <!-- element style="display: none;" -->
 

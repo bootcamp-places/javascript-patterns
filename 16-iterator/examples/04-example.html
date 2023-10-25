@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iterator: example #4</title>
+</head>
+<body>
+<script>
+  class List {
+    level = 0;
+    children = [];
+
+    constructor(content = '', children = []) {
+      this.content = content;
+      this.children.push(...children);
+    }
+
+    *[Symbol.iterator]() {
+      this.level += 1;
+
+      yield [this.level, this.content];
+
+      for (const child of this.children) {
+        child.level = this.level;
+
+        yield* child;
+      }
+    }
+  }
+
+  class Item {
+    level;
+
+    constructor(content = '') {
+      this.content = content;
+    }
+
+    *[Symbol.iterator]() {
+      yield [this.level, this.content];
+    }
+  }
+
+  const list = new List('list #1.0', [
+    new Item('item #1.1'),
+    new Item('item #1.2'),
+    new List('list #2.0', [
+      new Item('item #2.1'),
+      new Item('item #2.2'),
+      new Item('item #2.3'),
+      new List('list #3.0', [
+        new Item('item 3.1'),
+        new Item('item 3.2')
+      ])
+    ])
+  ]);
+
+  // Print
+  for (const [level, content] of list) {
+    console.error(level, content);
+  }
+</script>
+</body>
+</html>

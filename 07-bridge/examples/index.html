@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bridge: example #1</title>
+</head>
+<body>
+
+<script>
+  class Notification {
+    constructor (name = '') {
+      this.name = name;
+    }
+  }
+
+  class ErrorNotification extends Notification {
+    constructor () {
+      super('error-notification');
+      this.color = 'red';
+    }
+  }
+
+  class SuccessNotification extends Notification {
+    constructor () {
+      super('success-notification');
+      this.color = 'green';
+    }
+  }
+
+  class ColorsPallet {
+    constructor (name = '') {
+      this.name = name;
+    }
+  }
+
+  class ErrorColorPallet extends ColorsPallet {
+    constructor () {
+      super('error-colors-pallet');
+      this.color = 'red';
+    }
+  }
+
+  class SuccessColorPallet extends ColorsPallet {
+    constructor () {
+      super('success-colors-pallet');
+      this.color = 'green';
+    }
+  }
+
+  class Notification {
+    constructor (name = '', colorsPallet) {
+      this.name = name;
+      this.colorsPallet = colorsPallet;
+    }
+
+    toString () {
+      return `This is ${this.name} notification with ${this.colorsPallet.color} colors pallet`;
+    }
+  }
+
+  const successNotificaton = new Notification('success', new SuccessColorPallet());
+  const errorNotificaton = new Notification('error', new ErrorColorPallet());
+
+  console.log(successNotificaton.toString());
+  console.log(errorNotificaton.toString());
+
+</script>
+</body>
+</html>

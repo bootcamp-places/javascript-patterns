@@ -6,14 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Creational
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет копировать объекты, не вдаваясь в подробности иx реализации.
+Allows you to copy objects without going into the details of their implementation.
 
 note:
+
+Дозволяє копіювати об'єкти, не вдаючись у подробиці їх реалізації.
 
 In JavaScript Prototype pattern may be implemented via `Object.create` method 
 

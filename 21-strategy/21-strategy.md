@@ -6,12 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Behavioral
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Определяет семейство схожих алгоритмов, после чего алгоритмы можно взаимозаменять прямо во время исполнения программы
+Defines a family of similar algorithms, after which the algorithms can be interchanged directly during program execution
+
+note:
+
+Визначає сімейство подібних алгоритмів, після чого алгоритми можна взаємозамінювати безпосередньо під час виконання програми
 
 ::: block <!-- element style="display: none;" -->
 
@@ -47,73 +50,6 @@
 
 #### Strategy: example #1
 
-What can be improved in Table implementation?
-
-```js
-class Table {
-  constructor(data, options = {}) {
-    this.data = data;
-    this.sortType = options.sortType;
-  }
-
-  sort (callback) {
-    if (this.sortType === 'client') {
-      const sortedData = [...this.data].sort((a, b) => a - b);
-      callback(sortedData);
-    }
-
-    if (this.sortType === 'server') {
-      fetch('https://api.some-server.com/get-sorted-data')
-        .then(response => response.json())
-        .then(data => callback(data));
-    }
-  }
-}
-```
-
---
-
-#### Strategy: example #1
-
-```js
-class SortOnClientStrategy {
-  sort (data, callback) {
-    const sortedData = [...data].sort((a, b) => {
-      return a - b;
-    });
-
-    callback(sortedData);
-  }
-}
-
-class SortOnServerStrategy {
-  sort (data, callback) {
-    fetch('https://api.some-server.com/get-sorted-data')
-      .then(response => response.json())
-      .then(data => callback(data));
-  }
-}
-
-class Table {
-  constructor(data, strategy) {
-    this.data = data;
-    this.strategy = strategy;
-  }
-
-  sort () {
-    this.strategy.sort(this.data, sortedData => {
-      console.error(sortedData);
-    });
-  }
-}
-
-const table = new Table([], new SortOnServerStrategy());
-```
-
---
-
-#### Strategy: example #2
-
 ```js
 class BankTransfer {
   execute(data) {
@@ -136,7 +72,7 @@ class CryptoTransfer {
 
 --
 
-#### Strategy: example #2
+#### Strategy: example #1
 
 ```js
 class Transfer {
@@ -152,7 +88,7 @@ class Transfer {
 
 --
 
-#### Strategy: example #2
+#### Strategy: example #1
 
 ```js
 // e.g. input values from form
@@ -179,7 +115,7 @@ transfer.execute(transferData)
 
 --
 
-#### Strategy: example #3
+#### Strategy: example #2
 
 How to improve?
 
@@ -210,7 +146,7 @@ const clientSortingTable = new Table([], { sortType: 'client' });
 
 --
 
-#### Strategy: example #3
+#### Strategy: example #2
 
 ```js
 class SortOnClientStrategy {
@@ -257,4 +193,4 @@ const clientSortingTable = new Table([], new SortOnClientStrategy());
 const serverSortingTable = new Table([], new SortOnServerStrategy());
 ```
 
-back: [[📖 presentation#Strategy]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Strategy]] <!-- element style="display:none" -->

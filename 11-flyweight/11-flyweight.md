@@ -9,15 +9,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Structural
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет экономит память, разделяя общее состояние объектов между собой,
-вместо хранения одинаковых данных в каждом объекте.
+Allows you to save memory by sharing the general state of objects among themselves, instead of storing the same data in each object.
 
 note:
+
+Дозволяє заощаджувати пам'ять, поділяючи загальний стан об'єктів між собою, замість зберігання однакових даних у кожному об'єкті.
 
 The flyweight pattern is useful when you're creating a huge number of objects, 
 which could potentially drain all available RAM. It allows us to minimize the amount of consumed memory.
@@ -126,7 +126,7 @@ const authors = [
 
 #### Flyweight: example #1
 
-```js [|]
+```js [|1-6,17|]
 class Author {  
   constructor({id = 0, name = ''} = {}) {  
     this.id = id;  
@@ -205,4 +205,4 @@ const createAuthor = (authorProps = {}) => {
 console.error(Object.keys(authorsList).length); // 3
 ```
 
-back: [[📖 presentation#Flyweight]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Flyweight]] <!-- element style="display:none" -->

@@ -6,18 +6,21 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Behavioral
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет итерировать некоторую сущность не раскрывая ее внутреннего устройства.
+Allows you to iterate an entity without revealing its internal structure.
+
+note:
+
+Дозволяє ітерувати деяку сутність, не розкриваючи її внутрішнього пристрою.
 
 --
 
 #### Iterator: code example #1
 
-```js [|]
+```js [|5-9|12]
 const range = {
   from: 1,
   to: 5,
@@ -96,4 +99,4 @@ class Item {
 }
 ```
 
-back: [[📖 presentation#Iterator]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Iterator]] <!-- element style="display:none" -->

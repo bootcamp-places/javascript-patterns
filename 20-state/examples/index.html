@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>State</title>
+</head>
+<body>
+
+<ul>
+  <li>
+    <label>
+      isAuthorized:
+      <input id="authStatus" type="checkbox" checked/>
+    </label>
+  </li>
+  <li>
+    <label>
+      isMentor
+      <input id="mentorStatus" type="checkbox"/>
+    </label>
+  </li>
+  <li>
+    <label>
+      isAdmin:
+      <input id="adminStatus" type="checkbox"/>
+    </label>
+  </li>
+
+  <div>
+    <textarea id="docField" cols="30" rows="5"></textarea>
+    <div>
+      <span id="docStatus"></span>
+    </div>
+    <div>
+      <input id="save" type="button" value="save"/>
+    </div>
+  </div>
+</ul>
+
+<script type="module">
+// member:
+//   - draft -> review
+// mentor:
+//   - review -> approved
+// admin:
+//  - draft -> published
+//  - review -> published
+//  - approved -> published
+
+const conditions = {
+  isAuthorized: true,
+  isAdmin: false,
+  isMentor: false
+};
+
+authStatus.addEventListener('change', event => {
+  conditions.isAuthorized = Boolean(event.target.checked);
+
+  console.error(conditions);
+});
+
+adminStatus.addEventListener('change', event => {
+  conditions.isAdmin = Boolean(event.target.checked);
+
+  console.error(conditions);
+});
+
+mentorStatus.addEventListener('change', event => {
+  conditions.isMentor = Boolean(event.target.checked);
+
+  console.error(conditions);
+});
+
+class Draft {
+  status = "document in draft status";
+
+  next () {
+    return new Review();
+  }
+
+  save () {
+    if (conditions.isAuthorized) {
+      return this.next();
+    }
+
+    return this;
+  }
+}
+
+class Review {
+  status = "document in review status";
+
+  next () {
+    return new Approved();
+  }
+
+  save () {
+    if (conditions.isMentor) {
+      return this.next();
+    }
+
+    return this;
+  }
+}
+
+class Approved {
+  status = "document in approved status";
+
+  next () {
+    return new Published();
+  }
+
+  save () {
+    if (conditions.isAdmin) {
+      return this.next();
+    }
+
+    return this;
+  }
+}
+
+class Published {
+  status = "document was published";
+
+  next () {
+    return this;
+  }
+
+  save () {
+    return this.next();
+  }
+}
+
+class Document {
+  constructor(text = '') {
+    this.text = text;
+    this.state = new Draft();
+    this.docStatus = document.querySelector('#docStatus');
+    this.docStatus.innerHTML = this.state.status;
+  }
+
+
+  save () {
+    this.state = this.state.save();
+
+    this.docStatus.innerHTML = this.state.status;
+  }
+}
+
+const saveBtn = document.querySelector('#save');
+const textElement = document.querySelector('#docField');
+const doc = new Document(textElement.value);
+
+saveBtn.addEventListener('click', () => {
+  doc.save();
+});
+
+</script>
+</body>
+</html>

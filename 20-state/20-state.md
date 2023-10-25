@@ -6,18 +6,21 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Behavioral
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет объектам менять поведение в зависимости от своего состояния
+Allows objects to change behavior depending on their state
+
+note:
+
+Дозволяє об'єктам змінювати поведінку залежно від свого стану
 
 --
 
 #### State: example #1
 
-```js [|]
+```js [|10-16]
 class TrafficLights {
   constructor() {
     this.state = "green";
@@ -102,4 +105,4 @@ const trafficLights = new TrafficLights();
 trafficLights.on();
 ```
 
-back: [[📖 presentation#State]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#State]] <!-- element style="display:none" -->

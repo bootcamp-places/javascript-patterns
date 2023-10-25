@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visitor: example #1</title>
+</head>
+<body>
+
+<script type="module">
+  class List {
+    children = [];
+
+    constructor(content = '', children = []) {
+      this.content = content;
+      this.children.push(...children);
+    }
+
+    accept (Visitor) {
+      new Visitor(this);
+    }
+
+    *[Symbol.iterator]() {
+      yield this;
+
+      for (const child of this.children) {
+        yield* child;
+      }
+    }
+  }
+
+  class Item {
+    constructor(content = '') {
+      this.content = content;
+    }
+
+    accept (Visitor) {
+      new Visitor(this);
+    }
+
+    *[Symbol.iterator]() {
+      yield this;
+    }
+  }
+
+  const list = new List('list #1.0', [
+    new Item('item #1.1'),
+    new Item('item #1.2'),
+    new List('list #2.0', [
+      new Item('item #2.1'),
+      new Item('item #2.2'),
+      new Item('item #2.3'),
+      new List('list #3.0', [
+        new Item('item #3.1'),
+        new Item('item #3.2')
+      ])
+    ])
+  ]);
+
+  class Visitor {
+    constructor(compositeItem) {
+      this.compositeItem = compositeItem;
+      this.init();
+    }
+
+    init () {
+      this.addPrint();
+    }
+
+    addPrint () {
+      this.compositeItem.print = () => {
+        if (this.compositeItem instanceof Item) {
+          console.log(`This is Item content: ${this.compositeItem.content}`)
+        }
+
+        if (this.compositeItem instanceof List) {
+          console.log(`This is List content: ${this.compositeItem.content}`)
+        }
+      }
+    }
+  }
+
+  // Install Visitor
+  for (const item of list) {
+    item.accept(Visitor);
+  }
+
+  // Print
+  for (const item of list) {
+    item.print();
+  }
+</script>
+</body>
+</html>

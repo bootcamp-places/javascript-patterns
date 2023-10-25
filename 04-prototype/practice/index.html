@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prototype: practice</title>
+</head>
+<body>
+<script type="module">
+  class Monster {
+    constructor(settings = {}) {
+      this.settings = settings;
+    }
+  }
+
+  class Location {
+    constructor(name = '', monstersCount = 0, monstersSettings = {}) {
+      this.name = name;
+      // todo: implement logic
+      this.monstersCount = monstersCount;
+      this.monstersSettings = {...monstersSettings};
+      this.initMonsters();
+    }
+
+    initMonsters () {
+      // todo: implement logic
+      this.monsters = new Array(this.monstersCount).fill(new Monster(this.monstersSettings));
+    }
+
+    clone () {
+      // todo: implement logic
+      return new Location(this.name, this.monstersCount, this.monstersSettings);
+    }
+  }
+
+  // tests
+  const dryHills = new Location("dryHills", 3, { type: "undead" });
+
+  console.error(dryHills.monsters);
+
+  // =================================
+  const lavaCavern = dryHills.clone();
+
+  lavaCavern.name = "laveCavern";
+  lavaCavern.monstersSettings.type = "demon";
+
+  console.error(lavaCavern.monsters);
+
+</script>
+</body>
+</html>

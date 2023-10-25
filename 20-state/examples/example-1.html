@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>State</title>
+</head>
+<body>
+
+<ul>
+  <li>
+    <label>
+      isMember
+      <input id="memberStatus" type="checkbox" checked/>
+    </label>
+  </li>
+  <li>
+    <label>
+      isMentor
+      <input id="mentorStatus" type="checkbox"/>
+    </label>
+  </li>
+  <li>
+    <label>
+      isAdmin:
+      <input id="adminStatus" type="checkbox"/>
+    </label>
+  </li>
+
+  <div>
+    <textarea id="docField" cols="30" rows="5"></textarea>
+    <div>
+      <span id="docStatus"></span>
+    </div>
+    <div>
+      <input id="publishBtn" type="button" value="publish"/>
+    </div>
+  </div>
+</ul>
+
+<script type="module">
+// member:
+//   - draft -> review
+// mentor:
+//   - review -> approved
+// admin:
+//  - draft -> published
+//  - review -> published
+//  - approved -> published
+
+const conditions = {
+  isMember: true,
+  isMentor: false,
+  isAdmin: false
+};
+
+memberStatus.addEventListener('change', event => {
+  conditions.isMember = Boolean(event.target.checked);
+
+  console.error(conditions);
+});
+
+adminStatus.addEventListener('change', event => {
+  conditions.isAdmin = Boolean(event.target.checked);
+
+  console.error(conditions);
+});
+
+mentorStatus.addEventListener('change', event => {
+  conditions.isMentor = Boolean(event.target.checked);
+
+  console.error(conditions);
+});
+
+class Draft {
+  status = "draft";
+
+  next () {
+    return new Review();
+  }
+
+  process () {
+    if (conditions.isAuthorized) {
+      return this.next();
+    }
+
+    return this;
+  }
+
+  reject () {
+    return this;
+  }
+}
+
+class Review {
+  status = "inReview";
+
+  next () {
+    return new Approved();
+  }
+
+  process () {
+    if (conditions.isMentor) {
+      return this.next();
+    }
+
+    return this;
+  }
+
+  reject () {
+    if (conditions.isMentor) {
+      return new Draft();
+    }
+
+    if (conditions.isAdmin) {
+      return new Draft();
+    }
+
+    return this;
+  }
+}
+
+class Approved {
+  status = "approved";
+
+  next () {
+    return new Published();
+  }
+
+  process () {
+    if (conditions.isAdmin) {
+      return this.next();
+    }
+
+    return this;
+  }
+
+  reject () {
+    if (conditions.isAdmin) {
+      return new Draft();
+    }
+
+    if (conditions.isMentor) {
+      return new Review();
+    }
+
+    return this;
+  }
+}
+
+class Published {
+  status = "published";
+
+  next () {
+    return this;
+  }
+
+  process () {
+    return this.next();
+  }
+
+  reject () {
+    return this;
+  }
+}
+
+class Document {
+  constructor(text = '') {
+    this.state = new Draft();
+    this.text = text;
+  }
+
+  process () {
+    this.state = this.state.process();
+  }
+
+  reject () {
+    this.state = this.state.reject();
+  }
+}
+
+class Doc {
+  status = "draft";
+
+  constructor(text = '') {
+    this.text = text;
+  }
+
+  process () {
+    if (this.status === "draft") {
+      if (conditions.isAdmin || conditions.isMember || conditions.isMentor) {
+        this.status = "inReview";
+        return;
+      }
+    }
+
+    if (this.status === "inReview") {
+      if (conditions.isMentor || conditions.isAdmin) {
+        this.status = "approved";
+        return;
+      }
+    }
+
+    if (this.status === "approved") {
+      if (conditions.isAdmin) {
+        this.status = "published";
+        return;
+      }
+    }
+
+    if (this.status === "published") {
+      this.status = "published";
+    }
+  }
+
+  reject () {
+    if (this.status === "draft") {
+      this.status = "draft";
+      return;
+    }
+
+    if (this.status === "inReview") {
+      if (conditions.isMentor || conditions.isAdmin) {
+        this.status = "draft";
+        return;
+      }
+    }
+
+    if (this.status === "approved") {
+      if (conditions.isMentor) {
+        this.status = "review";
+        return;
+      }
+
+      if (conditions.isAdmin) {
+        this.status = "draft";
+        return;
+      }
+    }
+
+    if (this.status === "published") {
+      this.status = "published";
+    }
+  }
+}
+
+
+const publishBtn = document.querySelector('#publishBtn');
+const textElement = document.querySelector('#docField');
+const doc = new Document(textElement.value);
+
+publishBtn.addEventListener('click', () => {
+  doc.process();
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mediator: example #1</title>
+</head>
+<body>
+<script>
+  class ChatRoom {
+    users = [];
+
+    subscribe (user) {
+      this.users.push(user);
+
+      return () => {
+        this.users.filter(item => item !== user);
+      }
+    }
+
+    getName() {
+      return ChatRoom.name;
+    }
+
+    broadcast (message = '') {
+      for (const user of this.users) {
+        this.send(this, user, message);
+      }
+    }
+
+    send (sender, receiver, message = '') {
+      const senderName = sender.getName();
+      const formattedMsg = `${new Date().toLocaleString()} [${senderName}]: ${message}`;
+
+      receiver.receiveMessage(formattedMsg);
+    }
+  }
+
+  class User {
+    constructor(name, chatroom) {
+      this.name = name;
+      this.chatroom = chatroom;
+    }
+
+    getName() {
+      return this.name;
+    }
+
+    send(receiver, message = '') {
+      this.chatroom.send(this, receiver, message);
+    }
+
+    receiveMessage (message = '') {
+      console.log(message);
+    }
+  }
+
+  const chatroom = new ChatRoom();
+
+  const john = new User("John", chatroom);
+  const peter = new User("Peter", chatroom);
+
+  chatroom.subscribe(john);
+  chatroom.subscribe(peter);
+
+  john.send(peter, "Some message");
+  peter.send(john, "Hey! New one message");
+
+  chatroom.broadcast('hi all');
+</script>
+</body>
+</html>

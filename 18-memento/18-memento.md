@@ -6,12 +6,15 @@
 
 ::: block <!-- element style="display: flex; font-size: 2rem" align="center"  -->
 - Type: Behavioral
-- Complexity: ⭐⭐⭐
 ::: 
 
 </split>
 
-Позволяет сохранять и восстанавливать прошлые состояния объектов, не раскрывая подробностей их реализации
+Allows you to save and restore past states of objects without revealing the details of their implementation
+
+note:
+
+Дозволяє зберігати та відновлювати минулі стани об'єктів, не розкриваючи подробиць їх реалізації
 
 --
 
@@ -120,4 +123,4 @@ editor.undo();
 console.log(editor.getState()); // {}
 ```
 
-back: [[📖 presentation#Memento]] <!-- element style="display:none" -->
+back: [[master-class/javascript-patterns/JavaScript-Gof-patterns#Memento]] <!-- element style="display:none" -->
