@@ -274,7 +274,7 @@ https://qa-online-editor.bootcamp.place/js-track/patterns/iterator
 ::: block <!-- element class="app-resources-block" -->
 
 - https://vscode.dev/github/dosandk/vanila-js-online-store/blob/083d499c1ff85fc9143f0f30d65c4e5a46386b45/src/core/request/proxy.js#L1
-  :::
+:::
 
 --
 
@@ -418,7 +418,13 @@ https://qa-online-editor.bootcamp.place/js-track/patterns/command
 
 ---
 
-## Q&A
+## Flux
+
+![[24-flux]]
+
+---
+
+## Patterns comparison
 
 - Observer vs Mediator?
 - Factory method vs Abstract factory?
